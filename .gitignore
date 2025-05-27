@@ -1,0 +1,3 @@
+# Ignorar node_modules del cliente y servidor
+/client/node_modules/
+/server/node_modules/
