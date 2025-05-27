@@ -1,0 +1,16 @@
+.container{
+    position: relative;
+}
+
+.bg{
+    min-height: 100vh;
+    background: url('../../public/bg/bg2.jpg.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.header{
+    position: absolute;
+}

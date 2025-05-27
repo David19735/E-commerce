@@ -1,0 +1,41 @@
+.container{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mensaje{
+    width: 60%;
+    height: 40vh;
+    padding: 2rem;
+    box-shadow: -2px -1px 16px 11px rgba(0,0,0,0.75);
+-webkit-box-shadow: -2px -1px 16px 11px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px -1px 16px 11px rgba(0,0,0,0.75);   
+}
+
+.mensaje h1{
+    text-align: center;
+    @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+    font-family: 'Poppins';
+}
+
+.mensaje p{
+    margin: 1rem 0;
+    @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+    font-family: 'Poppins';
+    font-weight: 500;
+}
+
+.mensaje a{
+    font-size: 1.3rem;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: all ease 0.3s;
+}
+
+.mensaje a:hover{
+    color: rgb(96, 170, 184);
+}

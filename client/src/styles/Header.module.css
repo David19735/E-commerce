@@ -1,0 +1,186 @@
+.head{
+    background: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    width: 100%;
+    top: 0;
+    right: 0;
+    min-height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.enlaces{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.enlaces a{
+    text-decoration: none;
+    color: white;
+    padding: 0.1rem 0.7rem;
+    border-radius: 15px;
+    transition: all ease 0.3s;
+    letter-spacing: 0.5px;
+}
+
+.enlaces a:nth-child(1){
+    background: rgb(66, 109, 189);
+}
+
+.enlaces a:hover{
+    background: rgba(66, 109, 189, 0.541); 
+}
+
+.domicilio{
+    width: 20%;
+    color: white;
+    padding: 0.3rem;
+    cursor: pointer;
+}
+
+.domicilio:hover{
+    outline: 1px solid white;
+}
+
+.domicilio p{
+    margin: 0;
+    font-size: 0.7rem;
+}
+
+.iconos{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.iconos .i{
+    background: red;
+    width: 10%;
+    height: 65%;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all ease 0.3s;
+}
+
+.iconos .i:hover{
+    transform: scale(1.2);
+}
+
+.iconos a{
+    color: white;
+}
+
+.iconos p{
+    margin: 0;
+    color: white;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+
+.carrito{
+    position: absolute;
+    top: 50px;
+    left: 0;
+    height: 60vh;
+    width: 85%;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all ease 0.4s;
+}
+
+.visible{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+
+.sesion{
+    position: absolute;
+    top: 60px;
+    left: -50px;
+    height: 18vh;
+    width: 70%;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all ease 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.visible2{
+    opacity: 1;
+    transform: translateY(-10px);
+    pointer-events: auto;
+}
+
+.sesion p{
+    color: black;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+.sesion .boton1{
+
+    width: 70%;
+    height: 35%;
+    border: none;
+    background: rgb(99, 30, 30);
+    color: white;
+    font-weight: 700;
+    transition: all ease 0.5s;
+}
+
+.boton1:hover{
+    background: rgb(59, 3, 3);
+}
+
+.sesion .boton2{
+    width: 70%;
+    height: 35%;
+    border: none;
+    background: rgb(20, 64, 105);
+    color: white;
+    font-weight: 700;
+    transition: all ease 0.5s;
+}
+
+.boton2:hover{
+    background: rgb(10, 36, 59);
+
+}
+
+.vacio{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.vacio p{
+    color: black;
+    font-weight: 400;
+}
