@@ -3,13 +3,11 @@ import style from '@/styles/Principal.module.css'
 import Header from './Header'
 import Juegos from './Juegos'
 
-function Principal({usuario}) {
+function Principal() {
   return (
    <div className={style.container}>
 
-    <Header
-    usuario={usuario}
-    />
+    <Header/>
     <div className={style.bg}>
     </div>
     <Juegos/>

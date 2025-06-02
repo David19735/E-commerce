@@ -1,0 +1,44 @@
+.container{
+    width: 100%;
+    min-height: 100vh;
+}
+
+.carrusel{
+    width: 80%;
+    max-height: 70vh;
+    margin: 4rem auto;
+}
+.carrusel_imagen{
+    width: 100%;
+    max-height:70vh;
+}
+
+.carrusel_imagen img{
+    width: 100%;
+    max-height: 70vh;
+    object-position: center;
+    object-fit: cover;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 85%;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.boton {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 0.25rem;
+}
+
+

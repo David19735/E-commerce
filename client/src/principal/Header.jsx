@@ -1,17 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from '@/styles/Header.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 
-function Header({usuario}) {
+function Header() {
 
   const [mostrarCarrito,setMostrarCarrito]=useState(false);
   const [mostrarSesion,setMostrarSesion]=useState(false);
+  const [csrfToken,setCsrfToken]=useState('');
   const router=useRouter();
 
+  useEffect(()=>{
+    const getToken=async()=>{
+      const res=await fetch('http://localhost:4000/auth/cerrar-sesion',{
+        credentials:'include'
+      })
+      const data=await res.json();
+      setCsrfToken(data.csrf)
+    }
+    getToken();
+  },[])
 
-  const usuarioActivo=usuario.usuario;
-  console.log(usuarioActivo);
+ 
+
+
 
   return (
     <header className={style.head} data-aos="flip-up">
@@ -23,14 +35,8 @@ function Header({usuario}) {
         </div>
 
         <div className={style.domicilio}>
-            <p>
-              {
-                usuarioActivo? `Entregar en: ${usuarioActivo.municipio} ${usuarioActivo.cp}`:'Entrega a domicilio'
-              }
-            </p>
-            <p><i className="bi bi-geo-alt-fill"></i> {
-              usuarioActivo? `${usuarioActivo.calle} ${usuarioActivo.numero}`:'Inicia sesión para entrega a domicilio'
-            }</p>
+            <p>Entrega a domicilio</p>
+            <p><i className="bi bi-geo-alt-fill"></i> Inicia sesión para entrega a domicilio</p>
 
         </div>
 
@@ -48,41 +54,20 @@ function Header({usuario}) {
               }}
             ><i className="bi bi-cart-fill"></i></span>
             <p>
-             {
-              usuarioActivo? `Hola, ${usuarioActivo.nombre}`:'Inicia sesión'
-             }
+             Inicia sesión
+             
             </p>
           
               <div className={`${style.carrito} ${mostrarCarrito? style.visible:''}`}>
-                  {
-                    usuarioActivo?
-                   <div>
-                    <p>Aquí van los artículos</p>
-                   </div> 
-
-                    :
+                 
                     <div className={style.vacio}> 
                       <p>No tienes artículos en el carrito</p>
                       <p>--Aún no has iniciado sesión--</p>
                     </div>
-                  }
+                  
               </div>
               <div className={`${style.sesion} ${mostrarSesion? style.visible2:''}`}>
-                {
-                  usuarioActivo?
-                  
-                  <>
-                  <p>¿Seguro que quieres cerrar sesión?</p>
-                  <button className={style.boton1}>Cerrar Sesión</button>
-                  </>
-                  :
-                <>
-                    <p>Inicia sesión para acceder a tus datos</p>
-                    <button className={style.boton2}
-                      onClick={()=>{router.push('/login')}}
-                    >Iniciar Sesión</button>
-                </>
-                }
+            
               </div>
         </div>
     </header>
