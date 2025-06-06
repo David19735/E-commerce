@@ -4,6 +4,7 @@ import style from '@/styles/Login.module.css';
 import Link from 'next/link';
 import Alerta from '@/components/Alerta';
 import { useRouter } from 'next/navigation';
+import { useUsuario } from '@/contextos/userContext';
 
 function Login() {
 
@@ -18,6 +19,8 @@ function Login() {
     const[estadoAlerta,setEstadoAlerta]=useState(false);
 
     const [csrfToken,setCsrfToken]=useState('');
+
+  const {obtenerUsuario}=useUsuario();
 
   useEffect(()=>{
     const getToken=async()=>{
@@ -76,6 +79,7 @@ function Login() {
 
         if(data.tipo==='exito'){
 
+          await obtenerUsuario;
           router.push('/')
         }
     }

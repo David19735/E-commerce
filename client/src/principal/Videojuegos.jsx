@@ -1,5 +1,7 @@
 import React from 'react'
 import style from '@/styles/Videojuegos.module.css'
+import Header from './Header';
+
 
 function Videojuegos(datos) {
 
@@ -8,6 +10,7 @@ function Videojuegos(datos) {
 
   return (
     <div className={style.container}>
+           <Header/>
             {
                 juegos.map((juego,index)=>{
                    return <div className={style.contenedor}>

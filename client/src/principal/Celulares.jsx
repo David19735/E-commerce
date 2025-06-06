@@ -6,15 +6,22 @@ import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import CarruselProductos from '@/components/CarruselProductos';
-
-
-
+import Header from './Header';
+import AlertaCarrito from '@/components/AlertaCarrito';
 
 function Celulares() {
 
   const [productos,setProductos]=useState([])
+  const [tit,setTit]=useState('');
+  const [imagen,setImagen]=useState('');
+  const [estadoAlerta,setEstadoAlerta]=useState(false);
 
-
+  const handleAgregar=(item)=>{
+    const {nombre,imagen}=item.cel;
+    setTit(nombre)
+    setImagen(imagen)
+    setEstadoAlerta(true);
+  } 
 
 useEffect(()=>{
   const getProduct=async()=>{
@@ -50,6 +57,7 @@ useEffect(()=>{
 
   return (
     <div className={style.container}>
+     <Header/> 
 
       <Swiper 
         modules={[Navigation, Autoplay]}
@@ -76,9 +84,19 @@ useEffect(()=>{
 
     
 
-   <CarruselProductos titulo="Iphone" producto={iphone}/> 
-   <CarruselProductos titulo="Samsung" producto={samsung}/> 
-   <CarruselProductos titulo="Motorola" producto={motorola}/> 
+   <CarruselProductos titulo="Iphone" producto={iphone} onAgregar={handleAgregar}/> 
+   <CarruselProductos titulo="Samsung" producto={samsung} onAgregar={handleAgregar}/> 
+   <CarruselProductos titulo="Motorola" producto={motorola} onAgregar={handleAgregar}/> 
+
+    {
+      estadoAlerta&&
+       <AlertaCarrito
+       estadoAlerta={estadoAlerta}
+       setEstadoAlerta={setEstadoAlerta}
+       tit={tit}
+       imagen={imagen}
+       />
+    }
 
     </div>
   )

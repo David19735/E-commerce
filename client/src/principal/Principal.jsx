@@ -4,6 +4,8 @@ import Header from './Header'
 import Juegos from './Juegos'
 
 function Principal() {
+
+
   return (
    <div className={style.container}>
 

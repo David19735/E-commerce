@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Bootstrap from "@/components/Bootstrap";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Aos from "@/components/Aos";
+import { UserProvider } from "@/contextos/userContext";
 
 export const metadata = {
   title: "Shop",
@@ -13,9 +14,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {children}
-       <Bootstrap/> 
-        <Aos/> 
+        <UserProvider>
+            {children}
+            <Bootstrap/> 
+            <Aos/> 
+        </UserProvider>
       </body>
     </html>
   );

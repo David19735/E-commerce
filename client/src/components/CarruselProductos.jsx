@@ -1,7 +1,7 @@
 import React,{useRef, useState} from 'react'
 import style from '@/styles/CarruselProductos.module.css'
 
-function CarruselProductos({titulo,producto=[]}) {
+function CarruselProductos({titulo,producto=[],onAgregar}) {
 
     const [productoCarrito,setProductoCarrito]=useState()
 
@@ -16,7 +16,6 @@ function CarruselProductos({titulo,producto=[]}) {
         contenedorRef.current.scrollBy({ left: 300, behavior: 'smooth' });
       };
 
-      console.log(productoCarrito);
 
   return (
    <div className={style.wrapper}>
@@ -26,21 +25,27 @@ function CarruselProductos({titulo,producto=[]}) {
           producto.map((cel,index)=>{
              return <div className={style.producto} key={index}>
                   <div className={style.imagen}>
-
+                      <img src={`${cel.imagen}`} alt="" />
                   </div>
                   <div className={style.contenido}>
                     <h3>{cel.nombre}</h3>
                     <h4>{cel.descripcion}</h4>
                     <p>${cel.precio}</p>
                     <button
-                        onClick={()=>{setProductoCarrito(cel)}}
-                    >Agregar al carrito</button>
+                        onClick={()=>{
+                          setProductoCarrito(cel)
+                          onAgregar({cel})
+                        }}
+                    >Agregar al carrito   
+                      <i className="bi bi-bag-fill"></i>
+                    </button>
                   </div>
              </div> 
           })
         }
     </div>
     <button className={style.boton} onClick={scrollDerecha}><i className="bi bi-caret-right-square-fill"></i></button>
+    
     </div>
   )
 }
