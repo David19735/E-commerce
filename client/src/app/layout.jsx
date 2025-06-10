@@ -4,6 +4,7 @@ import Bootstrap from "@/components/Bootstrap";
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import Aos from "@/components/Aos";
 import { UserProvider } from "@/contextos/userContext";
+import { CarProvider } from "@/contextos/productosContext";
 
 export const metadata = {
   title: "Shop",
@@ -15,9 +16,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <UserProvider>
+       <CarProvider>
             {children}
             <Bootstrap/> 
             <Aos/> 
+        </CarProvider> 
         </UserProvider>
       </body>
     </html>

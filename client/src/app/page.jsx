@@ -4,7 +4,7 @@ import Principal from '@/principal/Principal'
 
 
 function page() {
-  
+
   return (
     <>
       <Principal/>

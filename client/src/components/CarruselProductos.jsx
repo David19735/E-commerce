@@ -1,11 +1,17 @@
 import React,{useRef, useState} from 'react'
 import style from '@/styles/CarruselProductos.module.css'
+import Alerta from './Alerta';
+import { useCar } from '@/contextos/productosContext';
+
 
 function CarruselProductos({titulo,producto=[],onAgregar}) {
 
-    const [productoCarrito,setProductoCarrito]=useState()
-
+    const [mensaje,setMensaje]=useState('');
+    const [tipo,setTipo]=useState('error');
+    const [estadoAlerta,setEstadoAlerta]=useState(false);
     
+  const {addToCar}=useCar();
+
      const contenedorRef = useRef(null);
     
       const scrollIzquierda = () => {
@@ -15,6 +21,24 @@ function CarruselProductos({titulo,producto=[],onAgregar}) {
       const scrollDerecha = () => {
         contenedorRef.current.scrollBy({ left: 300, behavior: 'smooth' });
       };
+
+
+      const autorizarCompra=async(cel)=>{
+
+        const res=await fetch('http://localhost:4000/inicio/principal',{
+          credentials:'include'
+        })
+        const data=await res.json();
+        if(!data.usuario){
+           setTipo('error')
+            setMensaje('Inicia sesión para comprar productos')
+            setEstadoAlerta(true);
+            return
+        }
+        onAgregar({cel})        
+        addToCar(cel)
+      } 
+        
 
 
   return (
@@ -33,8 +57,7 @@ function CarruselProductos({titulo,producto=[],onAgregar}) {
                     <p>${cel.precio}</p>
                     <button
                         onClick={()=>{
-                          setProductoCarrito(cel)
-                          onAgregar({cel})
+                          autorizarCompra(cel)
                         }}
                     >Agregar al carrito   
                       <i className="bi bi-bag-fill"></i>
@@ -45,7 +68,15 @@ function CarruselProductos({titulo,producto=[],onAgregar}) {
         }
     </div>
     <button className={style.boton} onClick={scrollDerecha}><i className="bi bi-caret-right-square-fill"></i></button>
-    
+        {
+          estadoAlerta&&
+          <Alerta
+            tipo={tipo}
+            mensaje={mensaje}
+            estadoAlerta={estadoAlerta}
+            setEstadoAlerta={setEstadoAlerta}
+          />
+        }
     </div>
   )
 }
