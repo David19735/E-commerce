@@ -4,6 +4,7 @@ import style from '@/styles/Header.module.css'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useUsuario } from '@/contextos/userContext';
+import Carrito from './Carrito';
 
 
 function Header() {
@@ -81,8 +82,7 @@ function Header() {
               <div className={`${style.carrito} ${mostrarCarrito? style.visible:''}`}>
                  
                     <div className={style.vacio}> 
-                      <p>No tienes artículos en el carrito</p>
-                      <p>--Aún no has iniciado sesión--</p>
+                      <Carrito/>
                     </div>
                   
               </div>
