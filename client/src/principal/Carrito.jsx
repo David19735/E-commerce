@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useCar } from '@/contextos/productosContext'
 import style from '@/styles/Carrito.module.css'
 
 function Carrito() {
 
   const {car,deleteToCar}=useCar();
+
+   
 
 
   return (

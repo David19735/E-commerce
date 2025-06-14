@@ -7,7 +7,17 @@ const CarContext=createContext();
 export const CarProvider=({children})=>{
 
     const [car,setCar]=useState([]); 
-    
+
+    useEffect(()=>{
+        const carritoGuardado=localStorage.getItem('carrito');
+        if(carritoGuardado){
+            setCar(JSON.parse(carritoGuardado))
+        }
+    },[])
+
+    useEffect(()=>{
+        localStorage.setItem('carrito',JSON.stringify(car))
+    },[car])
 
     const addToCar=(producto)=>{
 
